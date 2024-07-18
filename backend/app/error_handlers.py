@@ -2,7 +2,7 @@ from http import HTTPStatus
 
 from flask import jsonify
 
-from .. import app
+from . import app
 
 
 class Invalid_API_usage(Exception):

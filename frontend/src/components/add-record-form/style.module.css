@@ -1,0 +1,22 @@
+
+.formBlock {
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.formDiv {
+    margin-bottom: 10px;
+}
+
+.inputLabel {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.inputField {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}

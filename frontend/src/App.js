@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TableSortLabel, TablePagination, Button, Modal, Box } from '@mui/material';
 
+import { AddRecordForm } from './components';
+
 const App = () => {
   const [data, setData] = useState([]);
   const [total, setTotal] = useState(0);
@@ -51,6 +53,11 @@ const App = () => {
     setModalOpen(true);
   };
 
+  const handleAdd = async (newItem) => {
+    await axios.post('http://localhost:5000/data', newItem);
+    fetchData();
+  };
+
   const handleDelete = async (id) => {
     await axios.delete(`http://localhost:5000/data/${id}`);
     fetchData();
@@ -61,6 +68,7 @@ const App = () => {
   };
 
   return (
+    <>
     <Paper>
       <TableContainer>
         <Table>
@@ -124,6 +132,8 @@ const App = () => {
         </Box>
       </Modal>
     </Paper>
+    <AddRecordForm onAdd={handleAdd} />
+    </>
   );
 };
 
