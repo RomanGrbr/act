@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "description": "Item 1",
+        "create_date": "2023-01-01",
+        "data": {"key1": "value1", "key2": "value2"}
+    },
+    {
+        "id": 2,
+        "description": "Item 2",
+        "create_date": "2023-01-02",
+        "data": {"key3": "value3", "key4": "value4"}
+    }
+]
