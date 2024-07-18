@@ -14,3 +14,5 @@ services:
       context: ./frontend
     ports:
       - "80:80"
+    links:
+      - backend

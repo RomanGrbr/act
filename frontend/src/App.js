@@ -1,6 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TableSortLabel, TablePagination, Button, Modal, Box } from '@mui/material';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  TableSortLabel,
+  TablePagination,
+  Button,
+  Modal,
+  Box
+} from '@mui/material';
 
 import { AddRecordForm } from './components';
 
@@ -15,9 +28,11 @@ const App = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedData, setSelectedData] = useState(null);
 
-  useEffect(() => {
-    fetchData();
-  }, [page, rowsPerPage, order, orderBy, filter]);
+  const item_id = 'id'
+  const description = 'description'
+  const create_date = 'create_date'
+  const asc = 'asc'
+  const desc = 'desc'
 
   const fetchData = async () => {
     const response = await axios.get('http://localhost:5000/data', {
@@ -34,8 +49,8 @@ const App = () => {
   };
 
   const handleRequestSort = (property) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
+    const isAsc = orderBy === property && order === asc;
+    setOrder(isAsc ? desc : asc);
     setOrderBy(property);
   };
 
@@ -54,7 +69,7 @@ const App = () => {
   };
 
   const handleAdd = async (newItem) => {
-    await axios.post('http://localhost:5000/data', newItem);
+    await await axios.post('http://localhost:5000/data', newItem);
     fetchData();
   };
 
@@ -67,6 +82,10 @@ const App = () => {
     setModalOpen(false);
   };
 
+  useEffect(() => {
+    fetchData();
+  }, [page, rowsPerPage, order, orderBy, filter]);
+
   return (
     <>
     <Paper>
@@ -76,27 +95,27 @@ const App = () => {
             <TableRow>
               <TableCell>
                 <TableSortLabel
-                  active={orderBy === 'id'}
-                  direction={orderBy === 'id' ? order : 'asc'}
-                  onClick={() => handleRequestSort('id')}
+                  active={orderBy === item_id}
+                  direction={orderBy === item_id ? order : asc}
+                  onClick={() => handleRequestSort(item_id)}
                 >
                   ID
                 </TableSortLabel>
               </TableCell>
               <TableCell>
                 <TableSortLabel
-                  active={orderBy === 'description'}
-                  direction={orderBy === 'description' ? order : 'asc'}
-                  onClick={() => handleRequestSort('description')}
+                  active={orderBy === description}
+                  direction={orderBy === description ? order : asc}
+                  onClick={() => handleRequestSort(description)}
                 >
                   Description
                 </TableSortLabel>
               </TableCell>
               <TableCell>
                 <TableSortLabel
-                  active={orderBy === 'create_date'}
-                  direction={orderBy === 'create_date' ? order : 'asc'}
-                  onClick={() => handleRequestSort('create_date')}
+                  active={orderBy === create_date}
+                  direction={orderBy === create_date ? order : asc}
+                  onClick={() => handleRequestSort(create_date)}
                 >
                   Create Date
                 </TableSortLabel>
@@ -111,7 +130,10 @@ const App = () => {
                 <TableCell>{row.description}</TableCell>
                 <TableCell>{row.create_date}</TableCell>
                 <TableCell>
-                  <Button onClick={(e) => { e.stopPropagation(); handleDelete(row.id); }}>Delete</Button>
+                  <Button onClick={(e) => {
+                      e.stopPropagation();
+                      handleDelete(row.id);
+                    }}>Delete</Button>
                 </TableCell>
               </TableRow>
             ))}
