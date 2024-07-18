@@ -7,10 +7,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ./backend/data.json:/app/data.json
-    environment:
-      FLASK_APP: backend
-      FLASK_ENV: development
+      - ./backend/app/data.json:/app/data.json
 
   frontend:
     build:

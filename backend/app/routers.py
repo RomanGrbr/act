@@ -1,13 +1,11 @@
 import json
 import os
 from pathlib import Path
+from http import HTTPStatus
 
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-
-
-app = Flask(__name__)
-CORS(app)
+from flask import request, jsonify
+# from app.error_handlers import Invalid_API_usage
+from app import app
 
 FILE_NAME = 'data.json'
 FILE_DIR = os.path.join(Path(__file__).resolve().parent, FILE_NAME)
@@ -50,7 +48,3 @@ def delete_data(item_id):
     with open(FILE_DIR, 'w') as file:
         json.dump(data, file)
     return jsonify({'success': True})
-
-
-if __name__ == '__main__':
-    app.run(debug=True)

@@ -6,8 +6,7 @@ COPY . .
 
 RUN pip3 install -r requirements.txt
 
-ENV FLASK_APP=backend
-ENV FLASK_ENV=development
+COPY .flaskenv .flaskenv
 
 EXPOSE 5000
 
