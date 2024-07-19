@@ -12,7 +12,9 @@ import {
   TablePagination,
   Button,
   Modal,
-  Box
+  Box,
+  Input,
+  Grid
 } from '@mui/material';
 
 import { AddRecordForm } from './components';
@@ -154,6 +156,21 @@ const App = () => {
         </Box>
       </Modal>
     </Paper>
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justify="center"
+      >
+        <Input
+            type='text'
+            placeholder='Фильтрация по описанию'
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+          >
+        </Input>
+      </Grid>
     <AddRecordForm onAdd={handleAdd} />
     </>
   );

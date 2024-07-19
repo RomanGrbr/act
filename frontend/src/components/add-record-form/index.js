@@ -17,6 +17,7 @@ const AddRecordForm = ({ onAdd }) => {
     };
     onAdd(newItem);
   };
+  
 
   return (
     <form className={styles.formBlock} onSubmit={handleSubmit}>
