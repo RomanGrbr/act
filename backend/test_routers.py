@@ -10,7 +10,7 @@ ITEM = {
 
 
 def test_get_data(client):
-    """Получение данных"""
+    """Получение данных."""
     response = client.get("/data")
     assert response.status_code == 200
     data = json.loads(response.data)
@@ -19,7 +19,7 @@ def test_get_data(client):
 
 
 def test_add_data(client):
-    """Добавление данных"""
+    """Добавление данных."""
     response = client.post("/data", json=ITEM)
     assert response.status_code == 201
     data = json.loads(response.data)
@@ -27,7 +27,7 @@ def test_add_data(client):
 
 
 def test_delete_data(client):
-    """Удаление данных"""
+    """Удаление данных."""
     response = client.delete("/data/999")
     assert response.status_code == 200
     data = json.loads(response.data)
