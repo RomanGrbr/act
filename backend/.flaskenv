@@ -1,2 +1,0 @@
-FLASK_APP=acti.py
-FLASK_ENV=development
